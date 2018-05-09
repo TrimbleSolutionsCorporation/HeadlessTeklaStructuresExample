@@ -1,32 +1,55 @@
-# Prerequisites
-*.d
+#ignore thumbnails created by windows
+Thumbs.db
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
+# Ignore files built by Visual Studio
+*.aps
+*.bak
+*.bu
+*.cache
+*.DotSettings
+*.idb
+*.ilk
+*.log
+*.metaproj
+*.ncb
 *.obj
-
-# Precompiled Headers
-*.gch
+*.opensdf
 *.pch
+*.pdb
+*.sbr
+*.sdf
+*.sonar
+*.suo
+*.tlb
+*.tlh
+*.tmp
+*.user
+*.vspscc
+*.vsscc
+*_p.c
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+# Developer tool generated files
+*My Amplifier XE Results - *
+*My Inspector XE Results - *
+*StyleCop.Cache
+*.orig
+*.rej
+*unittest-report*
 
-# Fortran module files
-*.mod
-*.smod
+#Movies
+*.avi
+*.mkv
+*.mpg
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+#Folders with generated stuff
+packages/
+obj/
+[Dd]ebug/
+[Rr]elease/
+[Tt]est[Rr]esult*/
 
-# Executables
-*.exe
-*.out
-*.app
+# Other version control
+.svn/
+*.MySCMServerInfo
+
+
