@@ -14,8 +14,9 @@ namespace HeadlessExample
         static void Main(string[] args)
         {
             // TeklaStructuresService needs to know the location of the TS binaries.
+            // You don't necessarily need to provide the bin directory, TeklaStructuresService will try to find the binaries automatically if not given as parameter.
             using (var service = new TeklaStructuresService(
-                new DirectoryInfo(@"C:\Program Files\Tekla Structures\2018\nt\bin")))
+                /* new DirectoryInfo(@"C:\Program Files\Tekla Structures\2018\nt\bin") */ )) 
             {
                 service.Initialize(
                     new DirectoryInfo(@"D:\TeklaStructuresModels\ESM"),
