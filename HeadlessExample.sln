@@ -1,22 +1,25 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeadlessExample", "HeadlessExample\HeadlessExample.csproj", "{F130AD88-6532-4C50-9B11-092B2079F4D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HeadlessExample.2021", "HeadlessExample.2021\HeadlessExample.2021.csproj", "{9AFC3EEF-658B-4901-938E-C5A93EF49973}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
-		Release|x64 = Release|x64
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F130AD88-6532-4C50-9B11-092B2079F4D4}.Debug|x64.ActiveCfg = Debug|x64
-		{F130AD88-6532-4C50-9B11-092B2079F4D4}.Debug|x64.Build.0 = Debug|x64
-		{F130AD88-6532-4C50-9B11-092B2079F4D4}.Release|x64.ActiveCfg = Release|x64
-		{F130AD88-6532-4C50-9B11-092B2079F4D4}.Release|x64.Build.0 = Release|x64
+		{9AFC3EEF-658B-4901-938E-C5A93EF49973}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AFC3EEF-658B-4901-938E-C5A93EF49973}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AFC3EEF-658B-4901-938E-C5A93EF49973}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AFC3EEF-658B-4901-938E-C5A93EF49973}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E9BBD204-26CA-43B1-AD3E-E8B89D310222}
 	EndGlobalSection
 EndGlobal

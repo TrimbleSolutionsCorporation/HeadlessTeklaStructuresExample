@@ -53,3 +53,5 @@ obj/
 *.MySCMServerInfo
 
 
+/BuildDrop/
+/.vs/
