@@ -33,6 +33,8 @@ namespace HeadlessExample
                 binDir = $@"C:\Program Files\Tekla Structures\{tsVersion}\nt\bin";
             }
 
+            ConfigureHeadlessIniFiles(binDir);
+
             AppDomain.CurrentDomain.AssemblyResolve += (s, a) => CurrentDomainAssemblyResolve(a, binDir);
             // TeklaStructuresService needs to know the location of the TS binaries.
             // additionally we need to set a resolver to load dlls from binary folder
@@ -58,6 +60,23 @@ namespace HeadlessExample
                 Console.WriteLine("ProjectInfo.Name        : " + new Model().GetProjectInfo().Name);
                 Console.WriteLine("ProjectInfo.Description : " + new Model().GetProjectInfo().Description);
             } // service must be disposed so that a clean exit is done. Once disposed, it cannot be used again during the process lifetime.
+        }
+
+        /// <summary>
+        /// Helpers function to set need patching for licensing or any other things required
+        /// </summary>
+        /// <param name="binDir"></param>
+        private static void ConfigureHeadlessIniFiles(string binDir)
+        {
+            var licenseServer = "27001@yourServerHere";
+            var runPath = @"C:\TeklaStructuresModels\RunPath";
+            var overrideIniFile = Path.Combine(runPath, "TeklaStructures.ini");
+            Directory.CreateDirectory(runPath);
+            // Always make a copy of a main the ini file so we dont break TS installation.
+            File.Copy(Path.Combine(binDir, "TeklaStructures.ini"), overrideIniFile, true);
+            File.AppendAllText(overrideIniFile, $"\r\nset XS_LICENSE_SERVER_HOST={licenseServer}\r\n");
+            File.AppendAllText(overrideIniFile, $"set XS_DEFAULT_LICENSE=Full\r\n");
+            Environment.SetEnvironmentVariable("TS_OVERRIDE_INI_FILE", overrideIniFile);
         }
 
         /// <summary>
