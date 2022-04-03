@@ -68,7 +68,7 @@ namespace HeadlessExample
         /// <param name="binDir"></param>
         private static void ConfigureHeadlessIniFiles(string binDir)
         {
-            var licenseServer = "27001@yourServerHere";
+            var licenseServer = "27001@yourserver";
             var runPath = @"C:\TeklaStructuresModels\RunPath";
             var overrideIniFile = Path.Combine(runPath, "TeklaStructures.ini");
             Directory.CreateDirectory(runPath);
@@ -76,7 +76,12 @@ namespace HeadlessExample
             File.Copy(Path.Combine(binDir, "TeklaStructures.ini"), overrideIniFile, true);
             File.AppendAllText(overrideIniFile, $"\r\nset XS_LICENSE_SERVER_HOST={licenseServer}\r\n");
             File.AppendAllText(overrideIniFile, $"set XS_DEFAULT_LICENSE=Full\r\n");
-            Environment.SetEnvironmentVariable("TS_OVERRIDE_INI_FILE", overrideIniFile);
+            
+            var envVar = Environment.GetEnvironmentVariable("TS_OVERRIDE_INI_FILE");
+            if (envVar == null || !envVar.Equals(overrideIniFile))
+            {
+                throw new ArgumentException($"Please set TS_OVERRIDE_INI_FILE, before exec the program: set TS_OVERRIDE_INI_FILE={overrideIniFile}");
+            }
         }
 
         /// <summary>
