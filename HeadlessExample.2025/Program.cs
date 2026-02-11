@@ -94,30 +94,38 @@ namespace HeadlessExample
                     false,
                     null);
 
-                // Step 3: Wait for license activation and query the model
+                // Step 3: Wait for license activation via GetConnectionStatus()
+                // This correctly detects license readiness even for empty models.
                 Console.WriteLine("Waiting for license...");
                 var model = new Tekla.Structures.Model.Model();
+                bool connected = false;
+
                 for (int attempt = 1; attempt <= 12; attempt++)
                 {
                     System.Threading.Thread.Sleep(5000);
-                    var objects = model.GetModelObjectSelector().GetAllObjects();
-                    int count = 0;
-                    while (objects.MoveNext()) count++;
 
-                    if (count > 0)
+                    if (model.GetConnectionStatus())
                     {
+                        connected = true;
                         Console.WriteLine($"License active after {attempt * 5}s.");
                         Console.WriteLine($"ProjectInfo.Name: {model.GetProjectInfo().Name}");
 
-                        objects = model.GetModelObjectSelector().GetAllObjects();
-                        int shown = 0;
-                        while (objects.MoveNext())
+                        var objects = model.GetModelObjectSelector().GetAllObjects();
+                        int count = 0;
+                        while (objects.MoveNext()) count++;
+
+                        if (count > 0)
                         {
-                            shown++;
-                            if (shown <= 5)
+                            objects = model.GetModelObjectSelector().GetAllObjects();
+                            int shown = 0;
+                            while (objects.MoveNext())
                             {
-                                var obj = objects.Current;
-                                Console.WriteLine($"  [{shown}] {obj.GetType().Name} Id={obj.Identifier.ID}");
+                                shown++;
+                                if (shown <= 5)
+                                {
+                                    var obj = objects.Current;
+                                    Console.WriteLine($"  [{shown}] {obj.GetType().Name} Id={obj.Identifier.ID}");
+                                }
                             }
                         }
                         Console.WriteLine($"Total: {count} objects");
@@ -125,6 +133,12 @@ namespace HeadlessExample
                     }
 
                     Console.WriteLine($"  Attempt {attempt}/12 ({attempt * 5}s): waiting...");
+                }
+
+                if (!connected)
+                {
+                    Console.WriteLine("Error: Tekla license did not activate within 60 seconds.");
+                    return;
                 }
 
                 Console.WriteLine("Done.");
