@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFrameworks>net48</TargetFrameworks>
+		<OutputPath>.</OutputPath>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<IntermediateOutputPath>obj\</IntermediateOutputPath>
+		<CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+		<DebugType>none</DebugType>
+		<PlatformTarget>x64</PlatformTarget>
+		<OutputType>Exe</OutputType>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Tekla.Structures.Service" Version="2025.0.0" />
+		<PackageReference Include="Tekla.Structures.Model" Version="2025.0.0" />
+		<PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
+	</ItemGroup>
+	<ItemGroup>
+		<Reference Include="DotNetKit">
+			<HintPath>C:\Program Files\Tekla Structures\2025.0\bin\DotNetKit.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="Trimble.Identity.AuthManager">
+			<HintPath>C:\Program Files\Tekla Structures\2025.0\bin\Trimble.Identity.AuthManager.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+	</ItemGroup>
+</Project>
